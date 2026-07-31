@@ -1,0 +1,86 @@
+<section class="relative flex items-center justify-center h-[150px] m-3 rounded-lg shadow-md overflow-hidden">
+    <img class="absolute inset-0 w-full h-full object-cover"
+         src="/images/Po_bg.jpg" 
+         alt="Poligonal Background">
+    <div class="z-10 text-white text-4xl font-bold text-center">
+        <h1>Edit Product</h1>
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center text-purple-800 mb-8">Edit Product</h1>
+    
+    <form action="/inventory/edit/<%= product._id %>" method="POST" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <!-- Title -->
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
+            <input type="text" id="title" name="title" value="<%= product.title %>" required class="w-full px-3 py-2 border rounded">
+        </div>
+
+        <!-- Description -->
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+            <input type="text" id="description" name="description" value="<%= product.description %>" required class="w-full px-3 py-2 border rounded">
+        </div>
+
+        <!-- Category -->
+        <div class="mb-4">
+            <label for="category" class="block text-gray-700 font-bold mb-2">Category:</label>
+            <input type="text" id="category" name="category" value="<%= product.category %>" required class="w-full px-3 py-2 border rounded">
+        </div>
+
+        <!-- Price -->
+        <div class="mb-4">
+            <label for="price" class="block text-gray-700 font-bold mb-2">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" min="0.01" value="<%= product.price %>" required class="w-full px-3 py-2 border rounded">
+        </div>
+
+        <!-- Sale Price -->
+        <div class="mb-4">
+            <label for="salePrice" class="block text-gray-700 font-bold mb-2">Sale Price (optional):</label>
+            <input type="number" id="salePrice" name="salePrice" step="0.01" min="0.01" value="<%= product.salePrice || '' %>" class="w-full px-3 py-2 border rounded">
+        </div>
+
+        <!-- Shipping Dimensions -->
+        <div class="grid grid-cols-2 gap-x-4 mb-4">
+            <!-- Weight -->
+            <div>
+                <label for="shippingWeight" class="block text-gray-700 font-bold mb-2">Weight (kg):</label>
+                <input type="number" id="shippingWeight" name="shippingWeight" min="1" value="<%= product.shippingWeight %>" required class="w-full px-3 py-2 border rounded">
+            </div>
+            <!-- Width -->
+            <div>
+                <label for="shippingWidth" class="block text-gray-700 font-bold mb-2">Width (cm):</label>
+                <input type="number" id="shippingWidth" name="shippingWidth" min="1" value="<%= product.shippingWidth %>" required class="w-full px-3 py-2 border rounded">
+            </div>
+            <!-- Length -->
+            <div>
+                <label for="shippingLength" class="block text-gray-700 font-bold mb-2">Length (cm):</label>
+                <input type="number" id="shippingLength" name="shippingLength" min="1" value="<%= product.shippingLength %>" required class="w-full px-3 py-2 border rounded">
+            </div>
+            <!-- Height -->
+            <div>
+                <label for="shippingHeight" class="block text-gray-700 font-bold mb-2">Height (cm):</label>
+                <input type="number" id="shippingHeight" name="shippingHeight" min="1" value="<%= product.shippingHeight %>" required class="w-full px-3 py-2 border rounded">
+            </div>
+        </div>
+       <!-- Image Upload -->
+        <div class="mb-4">
+            <label for="imageUrl" class="block text-gray-700 font-bold mb-2">Product Image:</label>
+            <input type="file" id="imageUrl" name="imageUrl" accept=".jpg, .jpeg, .png, .gif" class="w-full px-3 py-2 border rounded">
+            <img src="<%= product.imageUrl %>" alt="<%= product.title %>" class="w-32 h-32 mt-2 object-cover rounded">
+        </div>
+       <!-- Featured Checkbox -->
+       <div class="mb-4">
+            <label for="featured" class="flex items-center">
+                <input type="checkbox" id="featured" name="featured" <%= product.featured ? 'checked' : '' %> class="mr-2">
+                <span class="text-gray-700 font-bold">Featured</span>
+            </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Save Changes
+        </button>
+    </form>
+</section>

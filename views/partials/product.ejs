@@ -1,0 +1,17 @@
+<div class="card bg-purple-100 shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+    <figure>
+        <img class="w-full h-48 object-cover" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+    </figure>
+    <div class="card-body text-center">
+        <h3 class="text-xl font-semibold"><%= product.title %></h3>
+        <p class="text-lg text-gray-600">$<%= product.price.toFixed(2) %></p>
+
+        <% if (locals.user && locals.user.role === 'customer') { %>
+            <form action="/cart/add/<%= product._id %>" method="POST" class="mt-4">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 m-2 rounded">
+                    Buy
+                </button>
+            </form>
+        <% } %>
+    </div>
+</div>

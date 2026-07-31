@@ -1,0 +1,47 @@
+<section class="relative flex items-center justify-center h-[150px] m-3 rounded-lg shadow-md overflow-hidden">
+    <img class="absolute inset-0 w-full h-full object-cover"
+    src="/images/Po_bg.jpg" 
+    alt="Poligonal Background">
+    <div class="z-10 text-white text-4xl font-bold text-center">
+        <h1>From Ashes to Brilliance</h1>
+    </div>
+</section>
+
+<section class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center text-purple-800 mb-8">Inventory List</h1>
+    
+    <!-- Welcome message -->
+    <div class="bg-white shadow-md rounded-lg p-6 text-center mb-6">
+        <p class="text-lg text-gray-700 mb-4">Welcome, <%= locals.user.firstName %>! You are logged in as a data entry clerk.</p>
+    </div>
+
+    <!-- Buttons at the top -->
+    <div class="flex justify-between items-center mb-6">
+        <!-- Add Product Button -->
+        <a href="/inventory/add" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Add Product</a>
+        
+        <!-- Load Product Data Button -->
+        <a href="/load-data/products" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">Load Product Data</a>
+    </div>
+
+    <!-- Products List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% products.forEach(product => { %>
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <!-- Product Image -->
+                <img src="<%= product.imageUrl %>" alt="<%= product.title %>" class="w-full h-48 object-cover mb-4 rounded">
+
+                <!-- Product Info -->
+                <h2 class="text-xl font-bold mb-2"><%= product.title %></h2>
+                <p class="text-gray-600 mb-2"><%= product.description %></p>
+                <p class="text-purple-600 font-bold mb-2">$<%= product.price.toFixed(2) %></p>
+
+                <!-- Edit and Delete Buttons -->
+                <div class="flex justify-between">
+                    <a href="/inventory/edit/<%= product._id %>" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-1 px-3 rounded">Edit</a>
+                    <a href="/inventory/remove/<%= product._id %>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</section>

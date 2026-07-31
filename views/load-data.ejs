@@ -1,0 +1,18 @@
+<section class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center text-purple-800 mb-8">Load Data Result</h1>
+    <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+        <!-- Dynamic message with conditional styling -->
+        <p class="text-lg text-center mb-4 
+           <%= message.includes('Success') ? 'text-green-600' : 'text-yellow-600' %> 
+           font-semibold">
+            <%= message %>
+        </p>
+        
+        <div class="mt-6 text-center">
+            <a href="/inventory/list" 
+               class="bg-purple-600 text-white py-2 px-4 rounded font-bold hover:bg-purple-700">
+               View Inventory
+            </a>
+        </div>
+    </div>
+</section>

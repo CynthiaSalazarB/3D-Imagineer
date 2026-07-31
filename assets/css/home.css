@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+#menu-header{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background-color: #f8f9fa; 
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px; 
+    
+}
+
+a{
+    text-decoration: none;
+    padding: 10px;
+}
+
+#logo{
+width: 200px;
+border-radius: 10px; 
+object-fit: cover; 
+
+}
+.nav-menu {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;  
+}
+.nav-menu a:hover {
+    color: #f1c40f;
+}
+
+.menu-nav{
+text-align: center;
+width: 100%;
+
+}
+#hero {
+    margin: 10px;
+    border-radius: 10px; 
+    overflow: hidden; /* Ensures image respects the border radius */
+    height: 150px; 
+    position: relative; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: -1; 
+}
+
+.hero-text {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    z-index: 1; 
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#services {
+    padding: 20px;
+    background-color: #f8f9fa; 
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.service-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    animation: transform 0.3s, box-shadow 0.3s;
+}
+.service-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(98, 53, 161, 0.2);
+    transform: scale(1.05);
+    background-color: rgba(98, 53, 161, 0.2);
+  }
+
+.service-item img {
+    width: 100%;
+    height: 200px; /* Rectangular shape */
+    object-fit: cover; /* Ensures the image fits nicely */
+    border-radius: 10px;
+}
+
+.service-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Contrast for text */
+    background: rgba(98, 53, 161, 0.5); /* Slight background overlay */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.service-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.service-text p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+}
+
+
+/* Featured Inventory Section */
+#featured-inventory {
+    padding: 20px;
+    background-color: #fff; /* White background for contrast */
+    text-align: center;
+}
+
+#featured-inventory h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #6235a1;
+    text-transform: uppercase;
+}
+
+.inventory-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.inventory-item {
+    width: 30%; /* Ensures each item takes 30% of the row */
+    background-color: #f8f9fa; /* Light background for cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.inventory-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(98, 53, 161, 0.2);
+}
+
+.inventory-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.inventory-item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #6235a1;
+}
+
+.inventory-item p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+
+#site-footer {
+    background-color: #333;
+    color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border-top: 4px solid #6235a1;
+}
+
+.footer-menu, .footer-social {
+    margin-bottom: 15px;
+}
+
+.footer-nav a, .footer-social a {
+    color: #f8f9fa;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.footer-nav a:hover, .footer-social a:hover {
+    color: #f1c40f;
+    text-decoration: none;
+
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: #bbb;
+    margin-top: 10px;
+}
