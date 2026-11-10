@@ -1,17 +1,24 @@
-<div class="card bg-purple-100 shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-    <figure>
-        <img class="w-full h-48 object-cover" src="<%= product.imageUrl %>" alt="<%= product.title %>">
-    </figure>
-    <div class="card-body text-center">
-        <h3 class="text-xl font-semibold"><%= product.title %></h3>
-        <p class="text-lg text-gray-600">$<%= product.price.toFixed(2) %></p>
-
+<article class="studio-product">
+    <img class="studio-product-art" src="<%= product.imageUrl %>" alt="<%= product.title %>" loading="lazy">
+    <div class="studio-product-details">
+        <% if (product.category) { %>
+            <p class="studio-product-category"><%= product.category === 'Sceneries' ? 'Scenes' : product.category %></p>
+        <% } %>
+        <div class="studio-product-meta">
+            <h3><%= product.title %></h3>
+            <p class="studio-price">
+                <% if (product.salePrice) { %>
+                    <s><span class="sr-only">Regular price </span>$<%= product.price.toFixed(2) %></s>
+                    <span><span class="sr-only">Sale price </span>$<%= product.salePrice.toFixed(2) %></span>
+                <% } else { %>
+                    <span>$<%= product.price.toFixed(2) %></span>
+                <% } %>
+            </p>
+        </div>
         <% if (locals.user && locals.user.role === 'customer') { %>
-            <form action="/cart/add/<%= product._id %>" method="POST" class="mt-4">
-                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 m-2 rounded">
-                    Buy
-                </button>
+            <form action="/cart/add/<%= product._id %>" method="POST">
+                <button type="submit" class="studio-button studio-button-small" aria-label="Add to cart: <%= product.title %>">Add to cart</button>
             </form>
         <% } %>
     </div>
-</div>
+</article>

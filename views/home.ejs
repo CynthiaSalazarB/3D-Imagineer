@@ -1,55 +1,45 @@
-<section class ="relative flex items-center justify-center h-[150px] m-3 rounded-lg shadow-md overflow-hidden">
-    <img class="absolute inset-0 w-full h-full object-cover"
-    src="/images/Po_bg.jpg" 
-    alt="Poligonal Background" 
-     >
-    <div class="z-10 text-white text-4xl font-bold text-center">
-        <h1>From Ashes to Brilliance</h1>
+<section class="studio-hero studio-shell" aria-labelledby="studio-title">
+    <div class="studio-hero-copy">
+        <h1 id="studio-title" class="studio-display">Build your<br>next world.</h1>
+        <p class="studio-intro">Explore 3D interiors, characters, and scenes for the world you’re making.</p>
+        <a class="studio-button" href="/inventory">Browse the catalog <span aria-hidden="true">↗</span></a>
+    </div>
+    <figure class="studio-hero-art">
+        <img src="/images/blueroom.jpg" alt="Isometric room render with a blue sofa, desk, and large windows" fetchpriority="high">
+        <figcaption><span>Modern Bedroom</span><span>Interior design</span></figcaption>
+    </figure>
+</section>
+
+<section class="studio-section studio-shell" aria-labelledby="collections-title">
+    <div class="studio-section-head">
+        <h2 id="collections-title" class="studio-heading">Explore by collection</h2>
+        <a class="studio-text-link" href="/inventory">All models <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="studio-collections">
+        <a class="studio-collection" href="/inventory#interiors">
+            <img src="/images/kitchen.png" alt="" loading="lazy">
+            <h3>Interiors <span aria-hidden="true">↗</span></h3>
+        </a>
+        <a class="studio-collection" href="/inventory#characters">
+            <img src="/images/tortoise.jpg" alt="" loading="lazy">
+            <h3>Characters <span aria-hidden="true">↗</span></h3>
+        </a>
+        <a class="studio-collection" href="/inventory#scenes">
+            <img src="/images/space.jpg" alt="" loading="lazy">
+            <h3>Scenes <span aria-hidden="true">↗</span></h3>
+        </a>
     </div>
 </section>
 
-<section class="p-5 bg-gray-100"> 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <div class="relative rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition tranform">
-            <img class="w-full h-[200px] object-cover" src="/images/interior.png" alt="Interior Design">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500 bg-opacity-50 text-white text-center px-4 py-2 rounded-md shadow-lg">
-                <h2 class="text-lg font-bold">Interior Design</h2>
-                <p class="text-sm">Transform your spaces into works of art.</p>
-            </div>
+<% if (featuredProducts.length) { %>
+    <section class="studio-section studio-shell" aria-labelledby="featured-title">
+        <div class="studio-section-head">
+            <h2 id="featured-title" class="studio-heading">Featured models</h2>
         </div>
-        <div class="relative rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition tranform">
-            <img class="w-full h-[200px] object-cover" src="/images/characters.png" alt="Characters">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500 bg-opacity-50 text-white text-center px-4 py-2 rounded-md shadow-lg">
-                <h2 class="text-lg font-bold">Characters</h2>
-                <p class="text-sm">Bring your imagination to life.</p>
-            </div>
+        <div class="studio-products">
+            <% featuredProducts.forEach(product => { %>
+                <%- include('./partials/product', { product }) %>
+            <% }); %>
         </div>
-        <div class="relative rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition tranform">
-            <img class="w-full h-[200px] object-cover" src="/images/scenerie.png" alt="Sceneries">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500 bg-opacity-50 text-white text-center px-4 py-2 rounded-md shadow-lg">
-                <h2>Sceneries</h2>
-                <p>Set the stage, anywhere you want.</p>
-            </div>
-        </div>
-        <div class="relative rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition tranform">
-            <img class="w-full h-[200px] object-cover" src="/images/accessories.png" alt="Accessories">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500 bg-opacity-50 text-white text-center px-4 py-2 rounded-md shadow-lg">
-                <h2>Accessories</h2>
-                <p>Perfect details for every style.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container mx-auto px-4 py-10">
-    <h2 class="text-4xl text-center font-bold text-purple-800 mb-6">Featured Products</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <% featuredProducts.forEach(product => { %>
-            <%- include('./partials/product', { product: product }) %>
-        <% }) %>
-    </div>
-</section>
-
-
-
-
+    </section>
+<% } %>
