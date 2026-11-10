@@ -1,27 +1,17 @@
-<header class="flex flex-col md:flex-row items-center justify-between p-4 bg-base-200 border border-gray-300 rounded-lg shadow-md m-3">
-    <div class = "flex items-center">
-    <a href="/" class="flex items-center">
-    <img class="h-20 w-auto object-contain rounded-lg"
-         id="logo"
-         src = "/images/logo1.png" 
-         alt="Logo image"
-         >
-    </a>
+<header class="studio-header">
+    <div class="studio-shell studio-header-inner">
+        <a href="/" class="studio-wordmark">3D Imagineer<span aria-hidden="true">.</span></a>
+        <nav class="studio-nav" aria-label="Main navigation">
+            <a href="/">Home</a>
+            <a href="/inventory">Catalog</a>
+            <% if (!locals.user) { %>
+                <a href="/sign-up">Sign up</a>
+                <a href="/log-in" class="studio-nav-action">Log in</a>
+            <% } else { %>
+                <% const customer = locals.user.role === 'customer'; %>
+                <a href="<%= customer ? '/cart' : '/inventory/list' %>" class="studio-nav-action"><%= customer ? 'Cart' : 'Manage inventory' %></a>
+                <a href="/log-out">Log out</a>
+            <% } %>
+        </nav>
     </div>
-    
-    <nav class="flex flex-wrap gap-6 mt-4 md:mt-0">
-         <a href="/" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Home</a>
-         <a href="/inventory" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Inventory</a>
-
-         <% if (!locals.user) { %>
-          <a href="/sign-up" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Sign Up</a>
-         <a href="/log-in" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Login</a>
-      <% } else { %>
-          <a href="<%= locals.user.role === 'customer' ? '/cart' : '/inventory/list' %>" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Hello <%= locals.user.firstName %></a>
-          <a href="/log-out" class="text-lg font-bold text-purple-800 hover:text-yellow-400 transition duration-300">Log out</a>
-      <% } %>
-
-         
-    </nav>
-
- </header>
+</header>

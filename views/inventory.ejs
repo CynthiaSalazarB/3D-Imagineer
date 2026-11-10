@@ -1,12 +1,39 @@
-<section class="container mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold text-center text-purple-800 mb-8">Our Inventory</h1>
+<%
+    const collections = new Map([
+        ['Interior Design', { id: 'interiors', label: 'Interiors' }],
+        ['Characters', { id: 'characters', label: 'Characters' }],
+        ['Sceneries', { id: 'scenes', label: 'Scenes' }],
+    ]);
+    const groups = categorizedProducts.map(({ category, products }, index) => ({
+        ...(collections.get(category) ?? { id: `collection-${index}`, label: category }),
+        products,
+    }));
+%>
+<section class="studio-shell studio-catalog" aria-labelledby="catalog-title">
+    <div class="studio-catalog-head">
+        <h1 id="catalog-title" class="studio-display">3D model catalog</h1>
+        <% if (groups.length) { %>
+            <nav class="studio-catalog-nav" aria-label="Collections">
+                <% groups.forEach(({ id, label }) => { %>
+                    <a href="#<%= id %>"><%= label %></a>
+                <% }); %>
+            </nav>
+        <% } else { %>
+            <p class="studio-intro">There are no models in the catalog right now.</p>
+        <% } %>
+    </div>
 
-    <% categorizedProducts.forEach(category => { %>
-        <h2 class="text-2xl font-semibold text-purple-800 mt-6 mb-4"><%= category.category %></h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <% category.products.forEach(product => { %>
-                <%- include('./partials/product', { product: product }) %>
-            <% }) %>
-        </div>
-    <% }) %>
+    <% groups.forEach(({ id, label, products }) => { %>
+        <section class="studio-section studio-catalog-group" aria-labelledby="<%= id %>">
+            <div class="studio-section-head">
+                <h2 id="<%= id %>" class="studio-heading"><%= label %></h2>
+                <span class="studio-count"><%= products.length %> <%= products.length === 1 ? 'model' : 'models' %></span>
+            </div>
+            <div class="studio-products">
+                <% products.forEach(product => { %>
+                    <%- include('./partials/product', { product }) %>
+                <% }); %>
+            </div>
+        </section>
+    <% }); %>
 </section>
