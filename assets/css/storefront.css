@@ -1,10 +1,11 @@
 :root {
-    --studio-surface: oklch(0.977 0.008 236);
-    --studio-ink: oklch(0.23 0.026 248);
-    --studio-muted: oklch(0.43 0.028 248);
-    --studio-line: oklch(0.85 0.018 236);
-    --studio-accent: oklch(0.46 0.136 37);
-    --studio-sky: oklch(0.92 0.025 236);
+    --studio-accent: #744bab;
+    --studio-accent-hover: #6235a1;
+    --studio-surface: color-mix(in oklab, var(--studio-accent) 5%, white);
+    --studio-tint: color-mix(in oklab, var(--studio-accent) 15%, white);
+    --studio-line: color-mix(in oklab, var(--studio-accent) 24%, white);
+    --studio-ink: oklch(0.23 0.026 300);
+    --studio-muted: oklch(0.43 0.028 300);
     --studio-display-font: "Barlow", "Trebuchet MS", sans-serif;
     --studio-body-font: "Public Sans", "Segoe UI", sans-serif;
 }
@@ -34,12 +35,11 @@ body {
 .studio-header-inner { min-height: 4.5rem; padding-block: .55rem; }
 
 .studio-wordmark {
+    color: var(--studio-accent);
     font: 800 1.55rem/1 var(--studio-display-font);
     letter-spacing: -.035em;
     white-space: nowrap;
 }
-
-.studio-wordmark span { color: var(--studio-accent); }
 
 .studio-nav, .studio-footer-links, .studio-catalog-nav {
     display: flex;
@@ -106,20 +106,20 @@ body {
     font: 700 .9rem/1.3 var(--studio-body-font);
 }
 
-.studio-button:hover { background: oklch(0.39 0.116 37); }
+.studio-button:hover { background: var(--studio-accent-hover); }
 .studio-button-small { min-height: 2.75rem; }
 
 .studio-hero-art {
     overflow: hidden;
     border-radius: .5rem;
-    background: var(--studio-sky);
+    background: var(--studio-tint);
 }
 
 .studio-hero-art img, .studio-collection img, .studio-product-art {
     display: block;
     width: 100%;
     object-fit: cover;
-    background: var(--studio-sky);
+    background: var(--studio-tint);
 }
 
 .studio-hero-art img { aspect-ratio: 1.47; }
